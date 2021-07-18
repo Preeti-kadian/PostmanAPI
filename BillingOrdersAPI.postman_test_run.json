@@ -1,0 +1,186 @@
+{
+	"id": "831e2163-607e-41a6-82b9-8862fec9ffeb",
+	"name": "BillingOrdersAPI",
+	"timestamp": "2021-07-17T08:09:32.669Z",
+	"collection_id": "15881019-9ba27f75-36b4-4150-9693-007f84964312",
+	"folder_id": 0,
+	"environment_id": "2fc6123b-de1a-429e-b3e0-4b69e7b81dfd",
+	"totalPass": 4,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "79afdbba-d0d6-452c-9ab9-448ba0585525",
+			"name": "Create new Billing Order",
+			"url": "http://localhost:8080/BillingOrder",
+			"time": 758,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				758
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7b52ed6c-0ad0-4336-97e9-8fe9a7704192",
+			"name": "Read the new created order",
+			"url": "http://localhost:8080/BillingOrder/1",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Checking new created order": true
+			},
+			"testPassFailCounts": {
+				"Checking new created order": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Checking new created order": true
+				}
+			]
+		},
+		{
+			"id": "afd43013-8bde-4675-9e0e-054e66abbfce",
+			"name": "Read the specific order",
+			"url": "http://localhost:8080/BillingOrder/1",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Checking specific order": true
+			},
+			"testPassFailCounts": {
+				"Checking specific order": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Checking specific order": true
+				}
+			]
+		},
+		{
+			"id": "406b3b5b-9042-4e50-a498-2a6808b18be2",
+			"name": "Update a Billing order",
+			"url": "http://localhost:8080/BillingOrder/1",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "259ea9c9-a5f0-4c7b-9fd1-255dc79d91ea",
+			"name": "Read the updated order",
+			"url": "http://localhost:8080/BillingOrder/1",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"order updated": true
+			},
+			"testPassFailCounts": {
+				"order updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"order updated": true
+				}
+			]
+		},
+		{
+			"id": "ad983c7b-0b82-42f3-8f15-cfca18baf349",
+			"name": "Delete a billing order",
+			"url": "http://localhost:8080/BillingOrder/1",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful Delete request": true
+			},
+			"testPassFailCounts": {
+				"Successful Delete request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Successful Delete request": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 876,
+	"collection": {
+		"requests": [
+			{
+				"id": "79afdbba-d0d6-452c-9ab9-448ba0585525",
+				"method": "POST"
+			},
+			{
+				"id": "7b52ed6c-0ad0-4336-97e9-8fe9a7704192",
+				"method": "GET"
+			},
+			{
+				"id": "afd43013-8bde-4675-9e0e-054e66abbfce",
+				"method": "GET"
+			},
+			{
+				"id": "406b3b5b-9042-4e50-a498-2a6808b18be2",
+				"method": "PUT"
+			},
+			{
+				"id": "259ea9c9-a5f0-4c7b-9fd1-255dc79d91ea",
+				"method": "GET"
+			},
+			{
+				"id": "ad983c7b-0b82-42f3-8f15-cfca18baf349",
+				"method": "DELETE"
+			}
+		]
+	}
+}

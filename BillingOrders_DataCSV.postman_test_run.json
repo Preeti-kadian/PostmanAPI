@@ -1,0 +1,96 @@
+{
+	"id": "d9b32b19-ed8a-4f51-b2f0-32650aaa3bcd",
+	"name": "BillingOrders_DataCSV",
+	"timestamp": "2021-07-17T12:15:14.577Z",
+	"collection_id": "15881019-9c89e61a-b673-4e55-a32e-129e5d65b85b",
+	"folder_id": 0,
+	"environment_id": "2fc6123b-de1a-429e-b3e0-4b69e7b81dfd",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "70175c9a-250a-400f-a867-1d25f26b9d9a",
+			"name": "Create new billing orders using csv file",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				86,
+				15,
+				9,
+				7,
+				8,
+				11,
+				10,
+				20,
+				11,
+				10
+			],
+			"allTests": [
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{}
+			]
+		},
+		{
+			"id": "7fdfdee9-9f0c-4882-9ccf-723a600c56c8",
+			"name": "Read all records created",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21,
+				10,
+				8,
+				8,
+				17,
+				11,
+				21,
+				19,
+				83,
+				6
+			],
+			"allTests": [
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{}
+			]
+		}
+	],
+	"count": 10,
+	"totalTime": 391,
+	"collection": {
+		"requests": [
+			{
+				"id": "70175c9a-250a-400f-a867-1d25f26b9d9a",
+				"method": "POST"
+			},
+			{
+				"id": "7fdfdee9-9f0c-4882-9ccf-723a600c56c8",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "9ba27f75-36b4-4150-9693-007f84964312",
+		"name": "BillingOrdersAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateOrder_TC",
+			"item": [
+				{
+					"name": "Create new Billing Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData= pm.response.json();",
+									"pm.environment.set(\"address1\", jsonData.addressLine1);",
+									"pm.environment.set(\"address2\", jsonData.addressLine2);",
+									"pm.environment.set(\"city\", jsonData.city); ",
+									"pm.environment.set(\"message\", jsonData.comment);",
+									"pm.environment.set(\"email\", jsonData.email);",
+									"pm.environment.set(\"fName\", jsonData.firstName);  ",
+									"pm.environment.set(\"id\", jsonData.id);     //setting variables in environment",
+									"pm.environment.set(\"item\", jsonData.itemNumber);",
+									"pm.environment.set(\"lName\", jsonData.lastName);",
+									"pm.environment.set(\"phone\", jsonData.phone);",
+									"pm.environment.set(\"state\", jsonData.state);",
+									"pm.environment.set(\"code\", jsonData.zipCode);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "ertyuhgfdfghj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressLine1\": \"Brisbane\",\n  \"addressLine2\": \"Street\",\n  \"city\": \"Holroyd\",\n  \"comment\": \"Newrecord\",\n  \"email\": \"john_nel@gmail.com\",\n  \"firstName\": \"John\",\n  \"id\": 0,\n  \"itemNumber\": 3,\n  \"lastName\": \"Nelson\",\n  \"phone\": \"0987654432\",\n  \"state\": \"AL\",\n  \"zipCode\": \"879652\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read the new created order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Checking new created order\", function () {",
+									"    var jsonData = pm.response.json();",
+									"",
+									"//    var actualFirstName=jsonData.firstName;            //from response",
+									"//     var expectedFirstName=pm.environment.get(\"fName\");     //from environment",
+									"    ",
+									"    pm.expect(jsonData.firstName).to.eql(pm.environment.get(\"fName\"));",
+									"    pm.expect(jsonData.lastName).to.eql(pm.environment.get(\"lName\"));",
+									"    pm.expect(jsonData.email).to.eql(pm.environment.get(\"email\"));",
+									"    pm.expect(jsonData.phoneNumber).to.eql(pm.environment.get(\"Phone\"));",
+									"    pm.expect(jsonData.city).to.eql(pm.environment.get(\"city\"));",
+									"    pm.expect(jsonData.zipCode).to.eql(pm.environment.get(\"code\"));",
+									"    pm.expect(jsonData.addressLine1).to.eql(pm.environment.get(\"address1\"));",
+									"    pm.expect(jsonData.addressLine2).to.eql(pm.environment.get(\"address2\"));",
+									"    pm.expect(jsonData.itemNumber).to.eql(pm.environment.get(\"item\"));",
+									"    pm.expect(jsonData.comment).to.eql(pm.environment.get(\"message\"));",
+									"    pm.expect(jsonData.state).to.eql(pm.environment.get(\"state\"));",
+									"    ",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ReadOrder_TC",
+			"item": [
+				{
+					"name": "Read the specific order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Checking specific order\", function () {",
+									"    var jsonData = pm.response.json();",
+									"",
+									"   var actualFirstName=jsonData.firstName;            //from response",
+									"    var expectedFirstName=pm.environment.get(\"fName\");     //from environment",
+									"    ",
+									"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+									"    pm.expect(jsonData.lastName).to.eql(pm.environment.get(\"lName\"));",
+									"    pm.expect(jsonData.email).to.eql(pm.environment.get(\"email\"));",
+									"    pm.expect(jsonData.phoneNumber).to.eql(pm.environment.get(\"Phone\"));",
+									"    pm.expect(jsonData.city).to.eql(pm.environment.get(\"city\"));",
+									"    pm.expect(jsonData.zipCode).to.eql(pm.environment.get(\"code\"));",
+									"    pm.expect(jsonData.addressLine1).to.eql(pm.environment.get(\"address1\"));",
+									"    pm.expect(jsonData.addressLine2).to.eql(pm.environment.get(\"address2\"));",
+									"    pm.expect(jsonData.itemNumber).to.eql(pm.environment.get(\"item\"));",
+									"    pm.expect(jsonData.comment).to.eql(pm.environment.get(\"message\"));",
+									"    pm.expect(jsonData.state).to.eql(pm.environment.get(\"state\"));",
+									"    ",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateOrder_TC",
+			"item": [
+				{
+					"name": "Update a Billing order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData= pm.response.json();",
+									"pm.environment.set(\"address1\", jsonData.addressLine1);",
+									"pm.environment.set(\"address2\", jsonData.addressLine2);",
+									"pm.environment.set(\"city\", jsonData.city); ",
+									"pm.environment.set(\"message\", jsonData.comment);",
+									"pm.environment.set(\"email\", jsonData.email);",
+									"pm.environment.set(\"fName\", jsonData.firstName);  ",
+									"pm.environment.set(\"id\", jsonData.id);     //setting variables in environment",
+									"pm.environment.set(\"item\", jsonData.itemNumber);",
+									"pm.environment.set(\"lName\", jsonData.lastName);",
+									"pm.environment.set(\"phone\", jsonData.phone);",
+									"pm.environment.set(\"state\", jsonData.state);",
+									"pm.environment.set(\"code\", jsonData.zipCode);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressLine1\": \"Strathfield\",\n  \"addressLine2\": \"Street\",\n  \"city\": \"Adelaide\",\n  \"comment\": \"Updaterecord\",\n  \"email\": \"john_nel1@gmail.com\",\n  \"firstName\": \"Mike\",\n  \"id\": 0,\n  \"itemNumber\": 3,\n  \"lastName\": \"Neil\",\n  \"phone\": \"0987654432\",\n  \"state\": \"AL\",\n  \"zipCode\": \"879652\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							],
+							"query": [
+								{
+									"key": "content",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read the updated order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"order updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"",
+									"   var actualFirstName=jsonData.firstName;            //from response",
+									"    var expectedFirstName=pm.environment.get(\"fName\");     //from environment",
+									"    ",
+									"    pm.expect(actualFirstName).to.eql(expectedFirstName);",
+									"    pm.expect(jsonData.lastName).to.eql(pm.environment.get(\"lName\"));",
+									"    pm.expect(jsonData.email).to.eql(pm.environment.get(\"email\"));",
+									"    pm.expect(jsonData.phoneNumber).to.eql(pm.environment.get(\"Phone\"));",
+									"    pm.expect(jsonData.city).to.eql(pm.environment.get(\"city\"));",
+									"    pm.expect(jsonData.zipCode).to.eql(pm.environment.get(\"code\"));",
+									"    pm.expect(jsonData.addressLine1).to.eql(pm.environment.get(\"address1\"));",
+									"    pm.expect(jsonData.addressLine2).to.eql(pm.environment.get(\"address2\"));",
+									"    pm.expect(jsonData.itemNumber).to.eql(pm.environment.get(\"item\"));",
+									"    pm.expect(jsonData.comment).to.eql(pm.environment.get(\"message\"));",
+									"    pm.expect(jsonData.state).to.eql(pm.environment.get(\"state\"));",
+									"    ",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeleteOrder_TC",
+			"item": [
+				{
+					"name": "Delete a billing order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful Delete request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data validation",
+			"item": [
+				{
+					"name": "Email Validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Email validation\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Email should be valid\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressLine1\": \"Brisbane\",\n  \"addressLine2\": \"Street\",\n  \"city\": \"Holroyd\",\n  \"comment\": \"Newrecord\",\n  \"email\": \"john_nemail.com\",\n  \"firstName\": \"John\",\n  \"id\": 0,\n  \"itemNumber\": 3,\n  \"lastName\": \"Nelson\",\n  \"phone\": \"0987654432\",\n  \"state\": \"AL\",\n  \"zipCode\": \"879652\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ZipCode validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Zipcode validation\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Zip Code should be 6 digits\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressLine1\": \"jvh\",\n  \"addressLine2\": \"Street\",\n  \"city\": \"Holroyd\",\n  \"comment\": \"Newrecord\",\n  \"email\": \"john_@email.com\",\n  \"firstName\": \"John\",\n  \"id\": 0,\n  \"itemNumber\": 3,\n  \"lastName\": \"Nelson\",\n  \"phone\": \"0987654432\",\n  \"state\": \"AL\",\n  \"zipCode\": \"879682\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Phone Validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Email validation\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Email should be valid\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressLine1\": \"Brisbane\",\n  \"addressLine2\": \"Street\",\n  \"city\": \"Holroyd\",\n  \"comment\": \"Newrecord\",\n  \"email\": \"john_nemail.com\",\n  \"firstName\": \"John\",\n  \"id\": 0,\n  \"itemNumber\": 3,\n  \"lastName\": \"Nelson\",\n  \"phone\": \"0987654432\",\n  \"state\": \"AL\",\n  \"zipCode\": \"879652\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/BillingOrder",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"BillingOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
