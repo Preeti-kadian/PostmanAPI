@@ -1,17 +1,17 @@
 {
-	"id": "d9b32b19-ed8a-4f51-b2f0-32650aaa3bcd",
+	"id": "9ae92cb0-cfe5-4eeb-99c6-0ca9b4c2ddbc",
 	"name": "BillingOrders_DataCSV",
-	"timestamp": "2021-07-17T12:15:14.577Z",
+	"timestamp": "2021-07-19T12:26:06.866Z",
 	"collection_id": "15881019-9c89e61a-b673-4e55-a32e-129e5d65b85b",
 	"folder_id": 0,
 	"environment_id": "2fc6123b-de1a-429e-b3e0-4b69e7b81dfd",
-	"totalPass": 0,
+	"totalPass": 10,
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "70175c9a-250a-400f-a867-1d25f26b9d9a",
 			"name": "Create new billing orders using csv file",
-			"time": 10,
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -19,16 +19,16 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				86,
-				15,
-				9,
-				7,
-				8,
-				11,
-				10,
+				36,
+				24,
+				19,
+				23,
 				20,
+				15,
+				12,
 				11,
-				10
+				14,
+				12
 			],
 			"allTests": [
 				{},
@@ -51,36 +51,63 @@
 				"code": 200,
 				"name": "OK"
 			},
-			"tests": {},
-			"testPassFailCounts": {},
+			"tests": {
+				"Your test name": true
+			},
+			"testPassFailCounts": {
+				"Your test name": {
+					"pass": 10,
+					"fail": 0
+				}
+			},
 			"times": [
-				21,
+				13,
+				13,
+				14,
+				16,
 				10,
-				8,
-				8,
-				17,
-				11,
-				21,
-				19,
-				83,
+				6,
+				7,
+				6,
+				7,
 				6
 			],
 			"allTests": [
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{}
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				},
+				{
+					"Your test name": true
+				}
 			]
 		}
 	],
 	"count": 10,
-	"totalTime": 391,
+	"totalTime": 284,
 	"collection": {
 		"requests": [
 			{
